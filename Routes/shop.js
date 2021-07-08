@@ -1,7 +1,8 @@
 const express = require('express')
 const path = require('path')
 
-const rootDir = require('../Util/path')
+const rootDir = require('../utils/path')
+const adminData = require('./admin')
 
 
 const router = express.Router()
@@ -9,7 +10,8 @@ const router = express.Router()
 
 // GET :: /shop
 router.get('/', (req,res,next) => {
-    res.sendFile(path.join(rootDir, 'Views', 'shop.html'))
+    console.log('shop.js :: ', adminData.products)
+    res.sendFile(path.join(rootDir, 'views', 'shop.html'))
 })
 
 
