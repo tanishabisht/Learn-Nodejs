@@ -1,17 +1,14 @@
 const express = require('express')
-const path = require('path')
 
-const rootDir = require('../utils/path')
 
 
 const router = express.Router()
-
-
 const products = []
+
 
 // GET :: /admin/
 router.get('/', (req,res,next) => {
-    res.sendFile(path.join(rootDir, 'views', 'addProduct.html'))
+    res.render('addProduct', {docTitle:'Add Product'})
 })
 
 // POST :: /admin

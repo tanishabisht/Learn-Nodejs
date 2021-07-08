@@ -13,6 +13,11 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static('public'))
 
 
+// Setting templating engine
+app.set('view engine', 'ejs')
+app.set('views', 'views')
+
+
 // Middleware routers
 app.use('/admin', adminData.router)
 app.use('/shop', shopRouter)
@@ -20,7 +25,7 @@ app.use('/shop', shopRouter)
 
 // 404 Error
 app.use((req,res,next) => {
-    res.status(404).sendFile(path.join(rootDir, 'views', '404.html'))
+    res.render('404', {docTitle:'404'})
 })
 
 
