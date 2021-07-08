@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/global.css">
+    <title>Add Product</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/shop/">Shop</a>
+            <a href="/admin/">Add Product</a>
+        </nav>
+    </header>
+
+    <main>
+        <form action="/admin" method="POST">
+            <input placeholder="Enter product name..." class="add_input" type="text" name="prod_name">
+            <button class="add_btn" type="submit">Add Product</button>
+        </form>
+    </main>
+</body>
+
+</html>
