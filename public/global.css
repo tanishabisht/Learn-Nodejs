@@ -23,15 +23,29 @@ nav a {
 main {
     padding: 1rem;
 }
-
-
-
-
-.add_input {
-    padding: 5px;
-    border: 1px solid #333;
+.heading {
+    text-align: center;
+    margin-bottom: 20px;
 }
-.add_input:focus{
+.prod_subheading {
+    text-align: center;
+}
+
+
+
+
+/* ADD PRODUCT */
+.add_prod_container {
+    display: grid;
+    place-items: center;
+}
+.add_prod_input {
+    padding: 5px 0;
+    border: 1px solid #333;
+    width: 100%;
+    margin: 5px 0;
+}
+.add_prod_input:focus{
     outline: none;
 }
 
@@ -43,4 +57,58 @@ main {
 }
 .add_btn:hover {
     cursor: pointer;
+}
+
+
+
+
+
+
+
+/* PRODUCT LIST */
+.prod_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.prod_card {
+    background-color: #D5DBB3;
+    width: 24rem;
+    margin: 1rem;
+    padding: 15px;
+}
+.prod_img {
+    width: 100%;
+    height: 8rem;
+    object-fit: cover;
+}
+.prod_desc {
+    text-align: justify;
+}
+.prod_btn {
+    padding: 5px 15px;
+    border: 0;
+    background-color: #BB371A;
+    color: #fff;
+    margin-top: 5px;
+}
+.prod_btn:hover {
+    cursor: pointer;
+}
+
+
+
+/* INDIVIDUAL PRODUCT */
+.header_section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.prod_detail_hr {
+    margin: 1rem 0;
+}
+.prod_detail_img {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
 }

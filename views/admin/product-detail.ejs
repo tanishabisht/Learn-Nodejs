@@ -1,0 +1,15 @@
+<%- include('../includes/header') %>
+</head>
+
+<%- include('../includes/navbar') %>
+    <main>
+        <div class="header_section">
+            <h1><%= product.name %></h1>
+            <h2>$ <%= product.price %></h2>
+        </div>
+        <hr class="prod_detail_hr">
+        <img class="prod_detail_img" src="<%= product.img %>" alt="product image" />
+        <p class="prod_desc"><%= product.desc %></p>
+        <button class="prod_btn">Add to cart</button>
+    </main>
+<%- include('../includes/footer') %>

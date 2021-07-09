@@ -3,13 +3,27 @@
 
 <%- include('../includes/navbar') %>
     <main>
-        <h1>My Products</h1>
+        <h1 class="heading">My Products</h1>
         <% if(products.length!==0) { %>
-            <% products.map(function(prod){ %> 
-                <p><%= prod.name %></prod.name> 
-            <% }) %>
+            <div class="prod_list">
+                <% products.map(function(prod){ %>
+                    <div class="prod_card">
+                        <img class="prod_img" src="<%= prod.img %>" alt="product image" />
+                        <h2>$ <%= prod.price %></h2>
+                        <h3><%= prod.name %></h3>
+                        <p class="prod_desc"><%= prod.desc %></p>
+                        <div class="prod_action">
+                            <a href="/admin/product-detail/<%= prod.id %>"><button class="prod_btn">Details</button></a>
+                            <a href="/admin/product-edit/<%= prod.id %>"><button class="prod_btn">Edit</button></a>
+                            <form style="display:inline;" action="/admin/product-delete/<%= prod.id %>" method="POST">
+                                <button type="submit" class="prod_btn">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
         <% } else { %>
-            <p>No products...</p>
+            <p class="prod_subheading">No products...</p>
         <% } %>
     </main>
 <%- include('../includes/footer') %>
