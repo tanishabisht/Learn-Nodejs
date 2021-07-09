@@ -1,22 +1,27 @@
 const express = require('express')
 
+const adminController = require('../controllers/admin')
 
 
 const router = express.Router()
-const products = []
 
 
-// GET :: /admin/
-router.get('/', (req,res,next) => {
-    res.render('addProduct', {docTitle:'Add Product'})
-})
-
-// POST :: /admin
-router.post('/', (req,res,next) => {
-    products.push({name: req.body.prod_name})
-    res.redirect('/shop')
-})
 
 
-module.exports.router = router
-module.exports.products = products
+// get pages routers
+
+// GET :: /admin/product-add
+router.get('/product-add', adminController.getProductAddPage)
+// GET :: /admin/product-edit
+router.get('/product-edit', adminController.getProductEditPage)
+// GET :: /admin/product-list
+router.get('/product-list', adminController.getProductListPage)
+
+
+
+
+// POST :: /admin/product-add
+router.post('/product-add', adminController.postProduct)
+
+
+module.exports = router

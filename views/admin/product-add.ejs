@@ -1,11 +1,11 @@
-<%- include('includes/header') %>
+<%- include('../includes/header') %>
 </head>
 
-<%- include('includes/navbar') %>
+<%- include('../includes/navbar') %>
     <main>
-        <form action="/admin" method="POST">
+        <form action="/admin/product-add" method="POST">
             <input placeholder="Enter product name..." class="add_input" type="text" name="prod_name">
             <button class="add_btn" type="submit">Add Product</button>
         </form>
     </main>
-<%- include('includes/footer') %>
+<%- include('../includes/footer') %>

@@ -1,10 +1,9 @@
-const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const adminData = require('./routes/admin')
-const shopRouter = require('./routes/shop')
-const rootDir = require('./utils/path')
+const { get404Page } = require('./controllers/error')
+const adminRouter = require('./routes/admin')
+const userRouter = require('./routes/user')
 
 
 
@@ -19,14 +18,12 @@ app.set('views', 'views')
 
 
 // Middleware routers
-app.use('/admin', adminData.router)
-app.use('/shop', shopRouter)
+app.use('/admin', adminRouter)
+app.use('/user', userRouter)
 
 
 // 404 Error
-app.use((req,res,next) => {
-    res.render('404', {docTitle:'404'})
-})
+app.use(get404Page)
 
 
 

@@ -1,0 +1,15 @@
+<%- include('../includes/header') %>
+</head>
+
+<%- include('../includes/navbar') %>
+    <main>
+        <h1>My Products</h1>
+        <% if(products.length!==0) { %>
+            <% products.map(function(prod){ %> 
+                <p><%= prod.name %></prod.name> 
+            <% }) %>
+        <% } else { %>
+            <p>No products...</p>
+        <% } %>
+    </main>
+<%- include('../includes/footer') %>
