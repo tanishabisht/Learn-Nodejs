@@ -112,3 +112,24 @@ main {
     height: 20rem;
     object-fit: cover;
 }
+
+
+
+
+/* CART PAGE */
+.prod_cart_card {
+    position: relative;
+}
+.quantity {
+    background-color: #EBA83A;
+    border: 5px solid #D5DBB3;
+    color: #D5DBB3;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

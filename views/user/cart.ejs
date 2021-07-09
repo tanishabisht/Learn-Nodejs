@@ -3,6 +3,28 @@
 
 <%- include('../includes/navbar') %>
     <main>
-        <h1>Cart Page</h1>
+        
+        <div class="header_section">
+            <h1>Cart Page</h1>
+            <h2>$ <%= cartProducts.totalPrice %></h2>
+        </div>
+        <hr class="prod_detail_hr">
+
+        <div class="prod_list">
+            <% cartProducts.cart.map(function(prod) { %>
+                <div class="prod_card prod_cart_card">
+                    <div class="quantity"><%= prod.qty %></div>
+                    <img class="prod_img" src="<%= prod.img %>" alt="product image" />
+                    <h2>$ <%= prod.price %></h2>
+                    <h3><%= prod.name %></h3>
+                    <p class="prod_desc"><%= prod.desc %></p>
+                    <div class="prod_action">
+                        <form action="/user/cart-delete/<%= prod.id %>" method="POST">
+                            <button class="prod_btn" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
     </main>
 <%- include('../includes/footer') %>

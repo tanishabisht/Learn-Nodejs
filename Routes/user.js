@@ -22,5 +22,10 @@ router.get('/product-list', userController.getProductListPage)
 
 
 
+// POST :: /user/cart-add/:prodId
+router.post('/cart-add/:prodId', userController.addProductToCart)
+// POST :: /user/cart-delete/:prodId
+router.post('/cart-delete/:prodId', userController.deleteProductFromCart)
+
 
 module.exports = router

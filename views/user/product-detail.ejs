@@ -10,6 +10,8 @@
         <hr class="prod_detail_hr">
         <img class="prod_detail_img" src="<%= product.img %>" alt="product image" />
         <p class="prod_desc"><%= product.desc %></p>
-        <button class="prod_btn">Add to cart</button>
+        <form action="/user/cart-add/<%= product.id %>" method="POST">
+            <button class="prod_btn">Add to cart</button>
+        </form>
     </main>
 <%- include('../includes/footer') %>
