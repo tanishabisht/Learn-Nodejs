@@ -12,10 +12,6 @@ module.exports.getProductEditPage = (req,res,next) => {
 module.exports.getProductListPage = (req,res,next) => {
     res.render('admin/product-list.ejs', {docTitle:'Admin | List Products', products:Product.fetchAll()})
 }
-module.exports.getProductDetailPage = (req,res,next) => {
-    const { prodId } = req.params
-    res.render('admin/product-detail.ejs', {docTitle:'Admin | Detail Product', product:Product.fetchById(prodId)})
-}
 
 
 

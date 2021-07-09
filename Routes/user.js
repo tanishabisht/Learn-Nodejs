@@ -16,9 +16,9 @@ router.get('/checkout', userController.getCheckoutPage)
 // GET :: /user/orders
 router.get('/orders', userController.getOrdersPage)
 // GET :: /user/product-detail
-router.get('/product-detail', userController.getProductDetailPage)
+router.get('/product-detail/:prodId', userController.getProductDetailPage)
 // GET :: /user/product-list
-// router.get('/product-list', userController.getProductListPage)
+router.get('/product-list', userController.getProductListPage)
 
 
 

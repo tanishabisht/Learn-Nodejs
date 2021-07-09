@@ -16,8 +16,6 @@ router.get('/product-add', adminController.getProductAddPage)
 router.get('/product-edit/:prodId', adminController.getProductEditPage)
 // GET :: /admin/product-list
 router.get('/product-list', adminController.getProductListPage)
-// GET :: /admin/product-list/:prodId
-router.get('/product-detail/:prodId', adminController.getProductDetailPage)
 
 
 

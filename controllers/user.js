@@ -1,4 +1,4 @@
-// const Product = require('../models/product')
+const Product = require('../models/product')
 
 
 // Get Pages Controllers
@@ -12,8 +12,9 @@ module.exports.getOrdersPage = (req,res,next) => {
     res.render('user/orders', {docTitle:'User | Orders'})
 }
 module.exports.getProductDetailPage = (req,res,next) => {
-    res.render('user/product-detail', {docTitle:'User | Product detail'})
+    const { prodId } = req.params
+    res.render('user/product-detail', {docTitle:'User | Product detail', product:Product.fetchById(prodId)})
 }
-// module.exports.getProductListPage = (req,res,next) => {
-//     res.render('user/product-list', {docTitle:'User | Products list', products:Product.fetchAll()})
-// }
+module.exports.getProductListPage = (req,res,next) => {
+    res.render('user/product-list', {docTitle:'User | Products list', products:Product.fetchAll()})
+}
