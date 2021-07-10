@@ -5,6 +5,8 @@ const { get404Page } = require('./controllers/error')
 const adminRouter = require('./routes/admin')
 const userRouter = require('./routes/user')
 
+const { mongoConnect } = require('./utils/database')
+
 
 
 const app = express()
@@ -26,5 +28,6 @@ app.use('/user', userRouter)
 app.use(get404Page)
 
 
-
-app.listen(3000)
+mongoConnect(() => {
+    app.listen(3000)
+})

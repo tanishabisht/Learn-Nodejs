@@ -13,8 +13,8 @@
                         <h3><%= prod.name %></h3>
                         <p class="prod_desc"><%= prod.desc %></p>
                         <div class="prod_action">
-                            <a href="/admin/product-edit/<%= prod.id %>"><button class="prod_btn">Edit</button></a>
-                            <form style="display:inline;" action="/admin/product-delete/<%= prod.id %>" method="POST">
+                            <a href="/admin/product-edit/<%= prod._id %>"><button class="prod_btn">Edit</button></a>
+                            <form style="display:inline;" action="/admin/product-delete/<%= prod._id %>" method="POST">
                                 <button type="submit" class="prod_btn">Delete</button>
                             </form>
                         </div>
