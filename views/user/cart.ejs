@@ -11,15 +11,15 @@
         <hr class="prod_detail_hr">
 
         <div class="prod_list">
-            <% cartProducts.cart.map(function(prod) { %>
+            <% cartProducts.map(function(prod) { %>
                 <div class="prod_card prod_cart_card">
-                    <div class="quantity"><%= prod.qty %></div>
+                    <div class="quantity"><%= prod.quantity %></div>
                     <img class="prod_img" src="<%= prod.img %>" alt="product image" />
                     <h2>$ <%= prod.price %></h2>
                     <h3><%= prod.name %></h3>
                     <p class="prod_desc"><%= prod.desc %></p>
                     <div class="prod_action">
-                        <form action="/user/cart-delete/<%= prod.id %>" method="POST">
+                        <form action="/user/cart-delete/<%= prod._id %>" method="POST">
                             <button class="prod_btn" type="submit">Delete</button>
                         </form>
                     </div>

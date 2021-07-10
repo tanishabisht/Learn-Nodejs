@@ -22,7 +22,7 @@ module.exports.getProductListPage = (req,res,next) => {
 // Create Product
 module.exports.createProduct = (req,res,next) => {
     const { prod_name, prod_img, prod_desc, prod_price } = req.body
-    const product = new Product(prod_name, prod_img, prod_desc, prod_price)
+    const product = new Product(prod_name, prod_img, prod_desc, prod_price, req.user._id)
     product.save()
         .then(() => res.redirect('/admin/product-list'))
         .catch(err => console.log(err))
@@ -33,7 +33,7 @@ module.exports.createProduct = (req,res,next) => {
 module.exports.editProduct = (req,res,next) => {
     const { prodId } = req.params
     const { prod_name, prod_img, prod_desc, prod_price } = req.body
-    const product = new Product(prod_name, prod_img, prod_desc, prod_price, prodId)
+    const product = new Product(prod_name, prod_img, prod_desc, prod_price, req.user._id, prodId)
     product.save()
         .then(() => res.redirect('/admin/product-list'))
         .catch(err => console.log(err))

@@ -1,11 +1,11 @@
 const Product = require('../models/product')
-const Cart = require('../models/cart')
 
 
 // Get Pages Controllers
-module.exports.getCartPage = (req,res,next) => {    
-    res.render('user/cart', {docTitle:'User | Cart', cartProducts:Cart.fetchAllCartProducts()})
-    // res.render('user/cart', {docTitle:'User | Cart', cartProducts:Cart.fetchCartProducts()})
+module.exports.getCartPage = (req,res,next) => {
+    req.user.getCart()
+        .then(prods => res.render('user/cart', {docTitle:'User | Cart', cartProducts:prods}))
+        .catch(err => console.log(err))
 }
 module.exports.getCheckoutPage = (req,res,next) => {
     res.render('user/checkout', {docTitle:'User | Checkout'})
@@ -31,15 +31,16 @@ module.exports.getProductListPage = (req,res,next) => {
 // Add to Cart
 module.exports.addProductToCart = (req,res,next) => {
     const { prodId } = req.params
-    const product = Product.fetchById(prodId)
-    Cart.addProduct(prodId, product.price)
-    res.redirect('/user/cart')
+    Product.fetchById(prodId)
+        .then(prod => req.user.addToCart(prod))
+        .then(() => res.redirect('/user/cart'))
+        .catch(err => console.log(err))
 }
 
 // Delete from Cart
 module.exports.deleteProductFromCart = (req,res,next) => {
     const { prodId } = req.params
-    const product = Product.fetchById(prodId)
-    Cart.deleteById(prodId, product.price)
-    res.redirect('/user/cart')
+    req.user.deleteItemFromCart(prodId)
+        .then(() => res.redirect('/user/cart'))
+        .catch(err => console.log(err))
 }
