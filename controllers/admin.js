@@ -7,12 +7,12 @@ module.exports.getProductAddPage = (req,res,next) => {
 }
 module.exports.getProductEditPage = (req,res,next) => {
     const { prodId } = req.params
-    Product.fetchById(prodId)
+    Product.findById(prodId)
         .then(product => res.render('admin/product-edit.ejs', {docTitle:'Admin | Edit Product', product:product}))
         .catch(err => console.log(err))
 }
 module.exports.getProductListPage = (req,res,next) => {
-    Product.fetchAll()    
+    Product.find()    
         .then(products => res.render('admin/product-list.ejs', {docTitle:'Admin | List Products', products:products}))
         .catch(err => console.log(err))
 }
@@ -21,8 +21,8 @@ module.exports.getProductListPage = (req,res,next) => {
 
 // Create Product
 module.exports.createProduct = (req,res,next) => {
-    const { prod_name, prod_img, prod_desc, prod_price } = req.body
-    const product = new Product(prod_name, prod_img, prod_desc, prod_price, req.user._id)
+    const { name, img, desc, price } = req.body
+    const product = new Product({name, img, desc, price})
     product.save()
         .then(() => res.redirect('/admin/product-list'))
         .catch(err => console.log(err))
@@ -32,9 +32,16 @@ module.exports.createProduct = (req,res,next) => {
 // Edit Product
 module.exports.editProduct = (req,res,next) => {
     const { prodId } = req.params
-    const { prod_name, prod_img, prod_desc, prod_price } = req.body
-    const product = new Product(prod_name, prod_img, prod_desc, prod_price, req.user._id, prodId)
-    product.save()
+    const { name, img, desc, price } = req.body
+    Product.findById(prodId)
+        .then(product => {
+            console.log(product)
+            product.name = name
+            product.img = img
+            product.desc = desc
+            product.price = price
+            return product.save()
+        })
         .then(() => res.redirect('/admin/product-list'))
         .catch(err => console.log(err))
 }
@@ -43,7 +50,7 @@ module.exports.editProduct = (req,res,next) => {
 // Delete Product
 module.exports.deleteProduct = (req,res,next) => {
     const { prodId } = req.params
-    Product.deleteById(prodId)
+    Product.findByIdAndRemove(prodId)
         .then(() => res.redirect('/admin/product-list'))
         .catch(err => console.log(err))
 }

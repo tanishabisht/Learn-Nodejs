@@ -9,8 +9,8 @@ const adminRouter = require('./routes/admin')
 const userRouter = require('./routes/user')
 
 // Database
-const { mongoConnect } = require('./utils/database')
-const User = require('./models/user')
+// const User = require('./models/user')
+const mongoose = require('mongoose')
 
 
 
@@ -25,14 +25,14 @@ app.set('views', 'views')
 
 
 // Store User
-app.use((req,res,next) => {
-    User.fetchById('60e9650b930af170db3ba287')
-        .then(user => {
-            req.user = new User(user.name, user.email, user.cart, user._id)
-            next()
-        })
-        .catch(err => console.log(err))
-})
+// app.use((req,res,next) => {
+//     User.fetchById('60e9650b930af170db3ba287')
+//         .then(user => {
+//             req.user = new User(user.name, user.email, user.cart, user._id)
+//             next()
+//         })
+//         .catch(err => console.log(err))
+// })
 
 
 // Middleware routers
@@ -44,6 +44,7 @@ app.use('/user', userRouter)
 app.use(get404Page)
 
 
-mongoConnect(() => {
-    app.listen(3000)
-})
+// Connect to database
+mongoose.connect('mongodb+srv://tanisha:welcome1@nodejsmax.fgrzr.mongodb.net/shop', {useNewUrlParser:true, useUnifiedTopology:true})
+    .then(() => app.listen(3000))
+    .catch(err => console.log(err))

@@ -15,14 +15,14 @@ module.exports.getOrdersPage = (req,res,next) => {
 }
 module.exports.getProductDetailPage = (req,res,next) => {
     const { prodId } = req.params
-    Product.fetchById(prodId)
+    Product.findById(prodId)
         .then(product => res.render('user/product-detail', {docTitle:'User | Product detail', product:product}))
         .catch(err => console.log(err))    
 }
 module.exports.getProductListPage = (req,res,next) => {
-    Product.fetchAll()
-    .then(products => res.render('user/product-list', {docTitle:'User | Products list', products:products}))
-    .catch(err => console.log(err))
+    Product.find()
+        .then(products => res.render('user/product-list', {docTitle:'User | Products list', products:products}))
+        .catch(err => console.log(err))
 }
 
 

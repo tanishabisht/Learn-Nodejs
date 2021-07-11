@@ -1,39 +1,48 @@
-const { getDb } = require('../utils/database')
-const mongodb = require('mongodb')
+const { Schema, model } = require('mongoose')
 
 
-module.exports = class Product {
-    constructor(name, img, desc, price, userId, id){
-        this.name = name
-        this.img = img
-        this.desc = desc
-        this.price = price
-        this.userId = userId
-        this._id = id ? new mongodb.ObjectID(id) : null
-    }
+const productSchema = new Schema({
+    name: String,
+    price: Number,
+    desc: String,
+    img: String
+})
 
-    save(){
-        const db = getDb()
+module.exports = model('Product', productSchema)
 
-        let dbOp
-        if(this._id) dbOp = db.collection('products').updateOne({_id: this._id}, {$set:this})
-        else dbOp = db.collection('products').insertOne(this)
 
-        return dbOp
-    }
+// module.exports = class Product {
+//     constructor(name, img, desc, price, userId, id){
+//         this.name = name
+//         this.img = img
+//         this.desc = desc
+//         this.price = price
+//         this.userId = userId
+//         this._id = id ? new mongodb.ObjectID(id) : null
+//     }
 
-    static deleteById(id) {
-        const db = getDb()
-        return db.collection('products').deleteOne({ _id:new mongodb.ObjectID(id) })
-    }
+//     save(){
+//         const db = getDb()
 
-    static fetchAll() {
-        const db = getDb()
-        return db.collection('products').find().toArray()
-    }
+//         let dbOp
+//         if(this._id) dbOp = db.collection('products').updateOne({_id: this._id}, {$set:this})
+//         else dbOp = db.collection('products').insertOne(this)
 
-    static fetchById(id) {
-        const db = getDb()
-        return db.collection('products').find({_id: new mongodb.ObjectID(id)}).next()
-    }
-}
+//         return dbOp
+//     }
+
+//     static deleteById(id) {
+//         const db = getDb()
+//         return db.collection('products').deleteOne({ _id:new mongodb.ObjectID(id) })
+//     }
+
+//     static fetchAll() {
+//         const db = getDb()
+//         return db.collection('products').find().toArray()
+//     }
+
+//     static fetchById(id) {
+//         const db = getDb()
+//         return db.collection('products').find({_id: new mongodb.ObjectID(id)}).next()
+//     }
+// }
