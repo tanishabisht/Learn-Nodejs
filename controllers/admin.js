@@ -22,7 +22,7 @@ module.exports.getProductListPage = (req,res,next) => {
 // Create Product
 module.exports.createProduct = (req,res,next) => {
     const { name, img, desc, price } = req.body
-    const product = new Product({name, img, desc, price})
+    const product = new Product({name, img, desc, price, userId:req.user})
     product.save()
         .then(() => res.redirect('/admin/product-list'))
         .catch(err => console.log(err))

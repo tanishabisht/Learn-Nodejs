@@ -133,3 +133,44 @@ main {
     top: 0;
     right: 0;
 }
+
+
+
+
+
+
+/* ORDER PAGE */
+.order_btn_container {
+    text-align: center;
+}
+.order_btn {
+    padding: 10px 25px;
+    border: 0;
+    color: #BB371A;
+    background-color: #fff;
+    border: 2px solid #BB371A;
+    margin-top: 10px;
+}
+.order_btn:hover {
+    cursor: pointer;
+}
+
+.order_list {
+    padding: 1rem 5rem;
+}
+.order_card {
+    background-color: #D5DBB3;
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+.order_item_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.order_item {
+    background-color: #fff;
+    margin: 10px 10px 0 10px;
+    padding: 5px 10px;
+}

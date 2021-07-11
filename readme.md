@@ -28,3 +28,9 @@
   - Fetch document by id
   - Delete document by id
   - Update document by id
+  - POPULATE
+    ```javascript
+    .populate('fieldName', 'what field to keep and what not')
+    .populate('userId', 'name -_id').execPopulate()
+    ```
+  - SELECT: `.select('title price -_id')`

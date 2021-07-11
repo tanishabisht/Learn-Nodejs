@@ -28,4 +28,8 @@ router.post('/cart-add/:prodId', userController.addProductToCart)
 router.post('/cart-delete/:prodId', userController.deleteProductFromCart)
 
 
+// POST :: /user/order-add
+router.post('/order-add', userController.addOrder)
+
+
 module.exports = router

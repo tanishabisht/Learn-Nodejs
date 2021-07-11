@@ -1,8 +1,31 @@
 <%- include('../includes/header') %>
 </head>
 
+
+
+
 <%- include('../includes/navbar') %>
     <main>
-        <h1>Order Page</h1>
+
+        <h1 class="heading">Order Page</h1>
+        <hr class="prod_detail_hr">
+
+        <% if(orders.length!==0) { %>
+            <div class="order_list">
+                <% orders.map(function(ord){ %>
+                    <div class="order_card">
+                        <h3>Order Number :: <%= ord._id %></h3>
+                        <div class="order_item_container">
+                            <% ord.products.map(function(prod){ %>
+                                <div class="order_item"><%= prod.product.name %> (<%= prod.quantity %>)</div>
+                            <% }) %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p class="prod_subheading">No Orders...</p>
+        <% } %>
+
     </main>
 <%- include('../includes/footer') %>
