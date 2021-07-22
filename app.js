@@ -7,6 +7,7 @@ const { get404Page } = require('./controllers/error')
 // Routes
 const adminRouter = require('./routes/admin')
 const userRouter = require('./routes/user')
+const authRouter = require('./routes/auth')
 
 // Database
 const User = require('./models/user')
@@ -38,6 +39,7 @@ app.use((req,res,next) => {
 // Middleware routers
 app.use('/admin', adminRouter)
 app.use('/user', userRouter)
+app.use('/auth', authRouter)
 
 
 // 404 Error
@@ -47,13 +49,13 @@ app.use(get404Page)
 // Connect to database
 mongoose.connect('mongodb+srv://tanisha:welcome1@nodejsmax.fgrzr.mongodb.net/shop', {useNewUrlParser:true, useUnifiedTopology:true})
     .then(() => {
-        User.findOne()
-            .then(user => {
-                if(!user){
-                    const user = new User({name:'Tani', email:'tani@gmail.com', cart:{items:[]}})
-                    user.save()
-                }
-            })
+        // User.findOne()
+        //     .then(user => {
+        //         if(!user){
+        //             const user = new User({name:'Tani', email:'tani@gmail.com', cart:{items:[]}})
+        //             user.save()
+        //         }
+        //     })
         app.listen(3000)
     })
     .catch(err => console.log(err))

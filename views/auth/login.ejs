@@ -1,0 +1,13 @@
+<%- include('../includes/header') %>
+</head>
+
+<%- include('../includes/navbar') %>
+    <main class="add_prod_container">
+        <h1 class="heading">Login</h1>
+        <form class="add_prod_form" action="/auth/login" method="POST">
+            <input placeholder="Enter your email..." class="add_prod_input" type="email" name="email">
+            <input placeholder="Enter your password..." class="add_prod_input" type="password" name="password">
+            <button class="add_btn" type="submit">Login</button>
+        </form>
+    </main>
+<%- include('../includes/footer') %>

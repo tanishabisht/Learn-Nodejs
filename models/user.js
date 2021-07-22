@@ -2,8 +2,9 @@ const { Schema, model } = require('mongoose')
 
 
 const userSchema = new Schema({
-    name: String,
     email: String,
+    password:String,
+    confirmPassword:String,
     cart: {items: [{productId:{type:Schema.Types.ObjectId, ref:'Product'}, quantity:Number}]}
 })
 

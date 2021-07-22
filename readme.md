@@ -34,3 +34,13 @@
     .populate('userId', 'name -_id').execPopulate()
     ```
   - SELECT: `.select('title price -_id')`
+
+
+
+## Dependencies
+- `express`: provides middleware functionality to nodejs and handles nitty-gritty work so that we could focus on the logic
+- `mongodb`: gives access to mongodb driver that helps connect with our mongodb database
+- `mongoose`: encapsulates mongodb syntax into classes, which are easy to understand for a non-mongodb user
+- `ejs`: templating engine
+- `body-parser`: for parsing post requests
+- `bcryptjs`: for password encryption and decryption
