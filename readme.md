@@ -1,46 +1,49 @@
-# Node Js
+# Learn - Node.js
+Welcome to the Node.js learning repository. Here, you will find a variety of branches dedicated to different aspects of using Node.js for web development, including working with Express.js, templating engines, the MVC architecture, and interacting with MongoDB and Mongoose.
 
-## Branches
-- expressJs
-- templating_engine
-  - Examples: (ejs, pug, handlebars)
-- MVC
-  - Modal: Represents data structure and data manipulation functions
-  - View: What user sees
-  - Controller: The in between logic that tells which Model to work with and which View to render
-  - Routes: on what path which controller should execute
-- MongoDB
-  - Creating db connection
-  - Setting up db connection
-  - `insertOne() | insertMany()`: Save documents in collection of db
-  - `find().toArray()`: Fetch all data from collection
-  - `find({ _id:new mondodb.ObjectId(id) }).next()`: Fetch data by id from collection
-  - `updateOne({ _id:new mondodb.ObjectId(id) }, {$set:{title,desc})`: Update data by id from collection
-  - `deleteOne({ _id:new mondodb.ObjectId(id) })`: Delete document by id from collection
-- Mongoose
-  - refer [mongoose documentation](https://mongoosejs.com/docs/)
-  - `mongoose.connect('url')`: setting db connection
-  - `mongoose.Schema()`: creating Schema
-  - `mongoose.model('Name of the model', name_of_schema)`: create a model
-  - This creates a collection with the model_name all smalls and plural
-  - Add document
-  - Fetch all documents
-  - Fetch document by id
-  - Delete document by id
-  - Update document by id
-  - POPULATE
+
+## Instructions to run the application
+Follow these instructions to get the application running:
+1. Click the green **Code** button on the GitHub repository page and download the ZIP file.
+2. Extract the contents of the ZIP file.
+3. Open the extracted folder in your preferred IDE (such as VS Code).
+4. Install Node.js version 14.21.3:
+   - `nvm install v14.21.3`
+   - `nvm use v14.21.3`
+5. Install necessary packages:
+   - `npm install`
+6. Start the application:
+   - To run the project : `npm start`
+   - Go to `localhost:3000` to see the website contents
+
+
+## Branch Descriptions
+- **expressJs**: Explore the basics of setting up an Express.js application.
+
+- **templating_engine**: Learn how to integrate various templating engines like EJS, Pug, and Handlebars into your projects.
+- **MVC**:
+  - **Model**: Manages data and business logic.
+  - **View**: Handles layout and display.
+  - **Controller**: Routes commands to the model and view parts.
+  - **Routes**: Defines URLs to different parts of the application.
+- **MongoDB**:
+  - Set up and use database connections.
+  - Implement basic CRUD operations:
+    - `insertOne()` | `insertMany()`: Add new documents.
+    - `find().toArray()`: Retrieve all documents.
+    - `find({ _id: new mongodb.ObjectId(id) }).next()`: Fetch a single document by ID.
+    - `updateOne({ _id: new mongodb.ObjectId(id) }, {$set:{title, desc}})`: Update a document.
+    - `deleteOne({ _id: new mongodb.ObjectId(id) })`: Remove a document.
+- **Mongoose**:
+  - Comprehensive examples and techniques from the [Mongoose documentation](https://mongoosejs.com/docs/).
+  - Establish database connections, define schemas, and create models.
+  - Perform document operations such as add, fetch, delete, and update.
+  - Utilize Mongoose methods like `populate()` and `select()` for more complex queries.
     ```javascript
     .populate('fieldName', 'what field to keep and what not')
     .populate('userId', 'name -_id').execPopulate()
     ```
-  - SELECT: `.select('title price -_id')`
 
 
-
-## Dependencies
-- `express`: provides middleware functionality to nodejs and handles nitty-gritty work so that we could focus on the logic
-- `mongodb`: gives access to mongodb driver that helps connect with our mongodb database
-- `mongoose`: encapsulates mongodb syntax into classes, which are easy to understand for a non-mongodb user
-- `ejs`: templating engine
-- `body-parser`: for parsing post requests
-- `bcryptjs`: for password encryption and decryption
+## Technologies used
+`express` `mongodb` `mongoose` `ejs` `body-parser` `bcryptjs`

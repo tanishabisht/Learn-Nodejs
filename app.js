@@ -47,7 +47,8 @@ app.use(get404Page)
 
 
 // Connect to database
-mongoose.connect('mongodb+srv://tanisha:welcome1@nodejsmax.fgrzr.mongodb.net/shop', {useNewUrlParser:true, useUnifiedTopology:true})
+mongo_link = "mongodb+srv://tanisha:welcome1@cluster0.pxmdv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+mongoose.connect(mongo_link, {useNewUrlParser:true, useUnifiedTopology:true})
     .then(() => {
         // User.findOne()
         //     .then(user => {
